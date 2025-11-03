@@ -8,7 +8,8 @@ vscode/
 tempCodeRunnerFile
 
 # Personal History
-chat_history.json
+chat_chunks.json
+
 
 # Voice Output
 output.wav
