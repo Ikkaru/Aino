@@ -47,7 +47,6 @@ async def llm_response(input, sliding_windows_instance) -> None:
             }
             for doc in sliding_window_load
         ]
-        print(sliding_windows_instance.history)
 
         # Encode the user input
         query_vector = encode(input)
@@ -80,7 +79,7 @@ async def llm_response(input, sliding_windows_instance) -> None:
         await sliding_windows_instance.add_message("assistant", response)
 
         # Generate Voice Synthesis
-        speech_synthesis.speech(response)
+        await speech_synthesis.speech(response)
 
     # cancel on keyboard interrupt
     except KeyboardInterrupt:

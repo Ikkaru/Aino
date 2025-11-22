@@ -1,7 +1,8 @@
 import sherpa_onnx
 import numpy as np
-import sounddevice as sd
+from scipy.io.wavfile import write
 from config import VOICE_MODEL, SPEAKER_ID, SPEED
+import websockets_func.websockets as websockets
 
 # Create TTS config
 config = sherpa_onnx.OfflineTtsConfig(
@@ -22,7 +23,7 @@ print("\x1B[35m(Speech) \x1B[37m Loading Speech model")
 tts = sherpa_onnx.OfflineTts(config)
 
 # Generate speech
-def speech(response):
+async def speech(response):
 
     audio = tts.generate(
         response, 
@@ -32,11 +33,10 @@ def speech(response):
 
     # Save audio
     speech_output = np.array(audio.samples, dtype=np.float32)
-    try:
-        sd.play(speech_output, samplerate=audio.sample_rate, blocking=False)
-        print(f"Playing output\nDuration: {len(speech_output) / audio.sample_rate:.2f}")
-    except KeyboardInterrupt:
-        sd.stop()
-        print("Stop playing (Keyboard Interupt)")
 
+    # Saving into File
+    write('output.wav', audio.sample_rate, speech_output)
+    print(f"Saving output audio\nDuration: {len(speech_output) / audio.sample_rate:.2f}")
     
+    # Triggering Speak on Client
+    await websockets.speak();
