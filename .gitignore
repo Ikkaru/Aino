@@ -3,15 +3,19 @@
 .venv
 
 # Local Folder
-_pycache_/
+archive/
+__pycache__/
 vscode/
 tempCodeRunnerFile
 
 # Personal History
+chat_chunks.json
 chat_history.json
 
 # Voice Output
 output.wav
 
 # Private Voice Model
-models/
+voice/
+
+

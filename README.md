@@ -1,13 +1,6 @@
-# cas-project
-AI asistent project
+# <div align="center">Project Ai-no</div>
+<p>Ai Assistant Project</p>
 
-working on: 
-Translator, 
-Subtitle, 
-Voice recognition, 
-3D Model??, 
-Model Context Protocol, 
-Better Voice Model, 
-
-Scheduled: Fixing Bug, and make the code tidier
-
+[x] Migrate to Anaconda
+[ ] Fixing All Codes
+[ ] Making LOGS System
