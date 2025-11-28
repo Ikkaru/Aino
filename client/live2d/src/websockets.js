@@ -1,5 +1,7 @@
 import { io } from "socket.io-client";
 
+let audioFile = "../output.wav"
+
 // Connect to websocket
 const socket = io("http://localhost:8000/");
 socket.on("connect", () => {
@@ -7,9 +9,10 @@ socket.on("connect", () => {
 });
 
 // Speak Function
-socket.on("triggerSpeak", () => {
+socket.on("triggerSpeak", (data) => {
+    
     if (typeof window.triggerSpeak == "function") {
-        window.triggerSpeak();
+        window.triggerSpeak(data);
     }
     else {
         console.warn("Error: Model not Loaded Yet");
